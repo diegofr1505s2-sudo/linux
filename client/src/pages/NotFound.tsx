@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Button, Card, CardContent } from "@/components/ui/primitives";
 import { AlertCircle, Home } from "lucide-react";
 import { useEffect } from "react";
 import { useLocation } from "wouter";

@@ -5,7 +5,7 @@ import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
 import { publicPlatformScript } from "./config";
 import { appRouter } from "../routers";
-import { createContext } from "./context";
+import { createContext } from "./apiCore";
 import { serveStatic, setupVite } from "./vite";
 import { registerAssistant } from "../assistant";
 import { registerCatalogueAssets } from "../catalogue-assets";

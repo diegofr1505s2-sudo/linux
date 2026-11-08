@@ -1,12 +1,13 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { appRouter } from "./routers";
-import type { TrpcContext } from "./_core/context";
+import type { TrpcContext } from "./_core/apiCore";
 import { publicPlatformConfig, publicPlatformScript } from "./_core/config";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { sdk } from "./_core/sdk";
 import { listLLMModels } from "./_core/llm";
 import { generateImage } from "./_core/imageGeneration";
 import { COOKIE_NAME } from "../shared/core";
+import { registerStorageProxy } from "./storage";
 
 afterEach(() => {
   vi.unstubAllEnvs();
@@ -69,6 +70,55 @@ describe("current platform integration", () => {
     expect(image.url).toMatch(/^\/manus-storage\/generated\//);
     expect(request).toHaveBeenCalledTimes(4);
     expect(JSON.parse(request.mock.calls[0][1].body)).toHaveProperty("originalImages");
+  });
+
+  it("redirects managed file requests without caching", async () => {
+    type ProxyResponse = {
+      set: (name: string, value: string) => ProxyResponse;
+      redirect: (status: number, url: string) => ProxyResponse;
+      status: (status: number) => ProxyResponse;
+      send: (body: string) => ProxyResponse;
+    };
+    type ProxyHandler = (
+      req: { params: Record<string, string> },
+      res: ProxyResponse
+    ) => Promise<void>;
+    const handlers: ProxyHandler[] = [];
+    const app = {
+      get: vi.fn((_path: string, handler: ProxyHandler) => handlers.push(handler)),
+    };
+    registerStorageProxy(app as never);
+    expect(app.get).toHaveBeenCalledWith(
+      "/manus-storage/*",
+      expect.any(Function)
+    );
+
+    vi.stubEnv("MANUS_API_URL", "https://api.example/");
+    vi.stubEnv("MANUS_API_KEY", "test-only");
+    const request = vi
+      .fn()
+      .mockResolvedValue(
+        new Response(JSON.stringify({ url: "https://download.example/file" }))
+      );
+    vi.stubGlobal("fetch", request);
+    const response = {
+      set: vi.fn().mockReturnThis(),
+      redirect: vi.fn().mockReturnThis(),
+      status: vi.fn().mockReturnThis(),
+      send: vi.fn().mockReturnThis(),
+    };
+    await handlers[0]?.(
+      { params: { "0": "images/demo.png" } },
+      response as unknown as ProxyResponse
+    );
+
+    const [requestUrl] = request.mock.calls[0] as [URL, RequestInit];
+    expect(requestUrl.searchParams.get("path")).toBe("images/demo.png");
+    expect(response.set).toHaveBeenCalledWith("Cache-Control", "no-store");
+    expect(response.redirect).toHaveBeenCalledWith(
+      307,
+      "https://download.example/file"
+    );
   });
 
   it("uses a distinct secure app cookie behind the HTTPS Preview proxy", () => {
