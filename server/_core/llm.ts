@@ -1,4 +1,4 @@
-import { ENV } from "./env";
+import { ENV } from "./config";
 
 export type Role = "system" | "user" | "assistant" | "tool" | "function";
 

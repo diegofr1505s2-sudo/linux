@@ -23,10 +23,10 @@ Manuellement, `pnpm install --frozen-lockfile` installe les dépendances et, sou
 
 Le bouton « Démarrer Linux » télécharge environ 12 Mio d’actifs libres, puis v86 exécute un vrai noyau Linux Buildroot/BusyBox dans le navigateur. Les pipes, fichiers, redirections et permissions sont réels à l’intérieur de cette VM. Il n’y a aucun shell serveur accessible, aucun montage du poste utilisateur et aucun relais réseau. Les fichiers sont temporaires.
 
-Le shell est ash, pas Bash. La disponibilité des programmes et des options ne correspond pas forcément à GNU/Linux complet. `busybox --list` et `command -v nom` montrent les utilitaires disponibles. Les exemples sont insérés sans Entrée ; l’utilisateur doit les vérifier et déclencher l’exécution. Les licences et la vérification du noyau sont décrites dans [docs/TERMINAL.md](docs/TERMINAL.md).
+Le shell est ash, pas Bash. La disponibilité des programmes et des options ne correspond pas forcément à GNU/Linux complet. `busybox --list` et `command -v nom` montrent les utilitaires disponibles. Les exemples sont insérés sans Entrée ; l’utilisateur doit les vérifier et déclencher l’exécution. Les licences et la vérification du noyau sont décrites dans [la section Terminal Linux du guide technique](docs/DEVELOPMENT.md#terminal-linux).
 
 ## Assistant pédagogique
 
 Le service Express `/api/assistant` appelle réellement GPT-6 Luna via les variables serveur `MANUS_API_URL` et `MANUS_API_KEY` fournies par le projet. Il explique une commande ou une erreur, avec limites de longueur, fréquence et durée, sans jamais exécuter de code. L’assistant utilise les crédits du projet. La dernière sortie du terminal n’est jointe que sur action explicite ; les conversations ne sont pas stockées dans une base de données.
 
-Les favoris, le thème et la progression déclarative sont conservés dans ce navigateur. Le contexte architectural est décrit dans [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+Les favoris, le thème et la progression déclarative sont conservés dans ce navigateur. Le contexte architectural est décrit dans [la section Architecture du guide technique](docs/DEVELOPMENT.md#architecture).

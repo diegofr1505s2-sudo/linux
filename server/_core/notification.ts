@@ -1,5 +1,5 @@
 import { TRPCError } from "@trpc/server";
-import { ENV } from "./env";
+import { ENV } from "./config";
 
 export type NotificationPayload = {
   title: string;

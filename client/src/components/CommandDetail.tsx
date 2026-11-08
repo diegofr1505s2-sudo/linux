@@ -15,13 +15,13 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { Streamdown } from "streamdown";
-import type { Command } from "@/lib/catalogue";
-import { CATEGORIES } from "@/lib/catalogue";
 import {
+  CATEGORIES,
   getCommandAvailability,
   terminalAppletCount,
   terminalProfile,
-} from "@/lib/terminal-capabilities";
+} from "@/lib/catalogue";
+import type { Command } from "@/lib/catalogue";
 
 export async function copyText(text: string) {
   try {

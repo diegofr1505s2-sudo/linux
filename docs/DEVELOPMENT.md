@@ -1,8 +1,22 @@
-# Terminal LinuxLab
+# Linux Lab — documentation technique
+
+## Architecture
+
+Le catalogue s’appuie sur les fiches communautaires tldr pour les plateformes common et linux. Les traductions françaises sont privilégiées ; les fiches sans traduction sont explicitement identifiées en anglais. Les exemples et options illustrées ne sont pas un manuel exhaustif. Le fichier HTML fourni est conservé comme référence d’import des exemples utiles, sans considérer les fragments de SQL comme des commandes Linux.
+
+Sources consultées le 8 novembre 2026 : https://github.com/tldr-pages/tldr et https://github.com/copy/v86 . tldr est un complément pratique aux manuels. v86 émule un ordinateur x86 dans le navigateur et exécute un vrai noyau Linux ; cela ne donne aucun accès au shell du serveur ou à la machine de l’utilisateur.
+
+L’interface React utilise des données statiques versionnées, une pagination pour limiter le nombre de cartes, des favoris locaux, et des panneaux accessibles Radix Dialog. Les thèmes sont enregistrés localement. Le terminal se télécharge uniquement au démarrage explicite et ses fichiers sont volatils. Aucun relais réseau n’est activé.
+
+Le seul serveur fonctionnel ajouté est une route Express d’assistance pédagogique /api/assistant, avec validation des entrées, limitation des requêtes et délai d’expiration. Elle utilise le service IA du projet et GPT-6 Luna, choisi dans le catalogue live pour son coût modéré et ses capacités en instruction, écriture et précision. Les clés restent exclusivement côté serveur. Les réponses s’affichent comme texte Markdown et ne sont jamais évaluées comme code. La sortie du terminal n’est jointe qu’en cochant l’option correspondante. Les échanges ne sont pas sauvegardés dans une base de données.
+
+Structure : client/src/pages/Home.tsx contient la bibliothèque et les parcours ; client/src/components/CommandDetail.tsx la fiche ; LinuxTerminal.tsx la VM ; LinuxAssistant.tsx la conversation. client/public/data contient le catalogue, client/public/vm les composants libres du terminal. Les scripts d’import et de vérification documentent les données et la VM. Aucun hébergement persistant de shell n’est nécessaire.
+
+## Terminal Linux
 
 `client/src/components/LinuxTerminal.tsx` exporte par défaut un terminal Linux réel exécuté exclusivement dans le navigateur. Le code machine x86 du noyau est émulé par v86 et compilé en WebAssembly. Les entrées clavier passent à l’UART série invité, puis les sorties invitées sont affichées par xterm.js. Il n’existe aucun endpoint d’exécution de commande sur l’hôte.
 
-## Intégration React
+### Intégration React
 
 ```tsx
 <LinuxTerminal
@@ -19,7 +33,7 @@ Garder le composant monté pendant la navigation et masquer son parent avec `hid
 
 Le bouton explicite **Démarrer Linux** charge les modules, BIOS, noyau et WASM. L’écran initial porte la mention « APERÇU VISUEL · AUCUNE COMMANDE EXÉCUTÉE » : il n’est pas un interpréteur simulé. Les états distinguent téléchargement, démarrage du noyau, préparation, shell prêt et erreur. La progression représente les octets réellement reçus, pas un pourcentage inventé. Les réponses HTTP invalides, pages HTML à la place des binaires, WASM incompatible et délai de 180 secondes donnent une erreur avec possibilité de réessayer. Redémarrer exige une confirmation native et recrée une VM neuve. Effacer ne vide que l’affichage, pas le système de fichiers.
 
-## Système invité et sécurité
+### Système invité et sécurité
 
 L’image officielle est `buildroot-bzimage68.bin`, avec Linux **6.8.12** et BusyBox **1.36.1**, vérifiés à l’exécution. L’initialisation force `/bin/busybox ash -i` après création de `/root/lab`. L’invite affiche `linuxlab:~/lab#` car ash abrège le répertoire personnel ; `pwd` retourne bien `/root/lab`. Les fichiers disponibles au premier démarrage sont `notes.txt`, `logs/app.log` et `projets/todo.txt`.
 
@@ -29,7 +43,7 @@ La VM utilise 128 Mio de mémoire invitée et 2 Mio de mémoire VGA. Aucun `netw
 
 Tab, les flèches, les séquences ANSI et Ctrl-C sont transmis par xterm et l’UART, pas réimplémentés comme des commandes factices. Les commandes saisies manuellement peuvent modifier ou casser le système invité ; elles ne bénéficient d’aucun accès au serveur ni aux fichiers locaux de l’utilisateur. Tout est volatil.
 
-## Actifs locaux et provenance
+### Actifs locaux et provenance
 
 Les binaires sont conservés dans `client/public/vm/`. Leur taille exacte est :
 
@@ -45,7 +59,7 @@ Le noyau provient de https://i.copy.sh/buildroot-bzimage68.bin ; les BIOS de htt
 
 Les notices et textes de licence sont accessibles à `/vm/NOTICE.md` et conservés à côté des binaires. v86 est BSD-2-Clause, xterm MIT, les BIOS ont leurs licences propres et l’image Linux contient des composants GPL ainsi que d’autres licences. Les configurations et le patch source de cette famille Buildroot 2024.05.2/Linux 6.8 ont été publiés dans https://github.com/copy/v86/issues/725 et https://gist.github.com/SuperMaxusa/19a789c9e9b4a69b3237947fdb86d61e. Les sources sont référencées dans la notice ; une redistribution modifiée ou commerciale doit conserver les sources exactes et produire `make legal-info`, pas seulement s’appuyer sur une mention générique « open source ».
 
-## Preuve d’exécution
+### Preuve d’exécution
 
 Commande de validation depuis la racine :
 
