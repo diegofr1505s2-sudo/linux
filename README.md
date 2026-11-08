@@ -2,9 +2,16 @@
 
 Référence interactive Linux en français, construite à partir de la cheat-sheet fournie et de tldr-pages. L’interface « Manuel phosphore » associe une bibliothèque filtrable, des fiches avec exemples, favoris, parcours d’apprentissage, mémo shell et terminal libre.
 
-## Exécution
+## Démarrage local
 
-`pnpm install --frozen-lockfile` installe les dépendances avec pnpm 10.18.0. `pnpm dev` démarre Express et Vite sur le port 3000. `pnpm check` vérifie les types. `pnpm build` produit le frontend et le serveur ; `pnpm start` démarre la version de production. Le Dockerfile est prêt pour le déploiement du serveur et des actifs statiques.
+Prérequis : Node.js 20.19+ ou 22.12+. Les scripts utilisent Corepack et la version pnpm 10.18.0 épinglée par le projet ; si les dépendances ne sont pas installées, ils les installent depuis le lockfile.
+
+- **Windows :** double-cliquez sur `start-local.cmd`, ou lancez-le depuis l’invite de commandes.
+- **macOS/Linux :** lancez `chmod +x ./start-local.sh` une fois, puis `./start-local.sh`.
+
+Ouvrez ensuite `http://localhost:3000`. Le serveur reste dans la fenêtre du terminal ; appuyez sur `Ctrl+C` pour l’arrêter. Pour choisir un autre port, définissez `PORT` avant de lancer le script.
+
+Manuellement, `pnpm install --frozen-lockfile` installe les dépendances et, sous macOS/Linux, `pnpm dev` démarre Express et Vite sur le port 3000. `pnpm check` vérifie les types. `pnpm build` produit le frontend et le serveur ; `pnpm start` démarre la version de production. Le Dockerfile est prêt pour le déploiement du serveur et des actifs statiques.
 
 ## Catalogue
 
