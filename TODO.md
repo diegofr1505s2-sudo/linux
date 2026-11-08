@@ -1,0 +1,14 @@
+# Linux Lab — résultats du Blueprint validé
+
+- [x] Catalogue étendu de commandes Linux organisé par catégories claires : fichiers, réseau, système, Bash, sécurité et domaines complémentaires. Importer les pages common/linux tldr, en privilégiant les traductions françaises, et préserver le contenu utile du fichier HTML fourni. Indiquer honnêtement les limites de couverture et la langue des fiches non traduites.
+- [x] Recherche instantanée sur noms, descriptions, options, catégories et mots-clés, avec filtres par catégorie, niveau, langue et favoris. Favoris persistants.
+- [x] Fiche détaillée au clic : syntaxe, rôle, options principales documentées, précautions, prérequis, commandes associées, sources. Exemples pratiques progressifs avec explication et copie rapide. Résultats illustratifs identifiés comme tels.
+- [x] Navigation pédagogique entre commandes liées, alternatives et enchaînements courants. Parcours débutant et aide Bash.
+- [x] Interface responsive accessible en français, sélecteur clair/sombre/système. Respecter le style confirmé « Manuel phosphore » : fond presque noir #071A12, vert #52F28A, IBM Plex Mono, panneaux raffinés de documentation/terminal.
+- [x] Terminal optionnel open source aussi réaliste que possible, isolé du serveur et du poste utilisateur : v86 + vrai noyau Linux/BusyBox dans le navigateur. Exemples insérables sans exécution automatique, démarrage explicite, réinitialisation, commandes réellement installées et limites de réseau/paquets clairement expliquées.
+- [x] Assistant Linux contextuel IA choisi dans le Blueprint : reformuler une commande, expliquer une erreur et proposer des pistes selon le niveau, signaler les opérations risquées. Vrai service IA, affichage Markdown, attente/erreur/réessai et aucune exécution de commandes par l’assistant.
+- [x] Vérification indépendante en lecture seule de l’intégration puis checkpoint du projet livrable.
+
+## Éléments de vérification
+
+Le catalogue a été contrôlé par son importateur : 6 786 fiches, 903 sources françaises et 30 246 exemples, provenance et licence CC BY 4.0 vérifiées. Le gzip (1 687 590 octets) décompressé via HTTP correspond au JSON original. Le moteur VM a démarré Linux 6.8.12 / BusyBox 1.36.1 et exécuté les commandes et un script multiligne, sans exécution à l’insertion. Le prédicat de disponibilité est partagé avec le test. La compilation TypeScript et la build passent. Une réponse réelle de l’assistant a été obtenue ; une entrée vide renvoie HTTP 400. Le serveur et le manifeste de routes renvoient HTTP 200. La revue indépendante en lecture seule n’a confirmé aucun blocage. Le parent a également vérifié le démarrage réel dans le navigateur : état Linux prêt et rendu xterm présents, après rechargement propre sans Fast Refresh. Un exemple pwd a été inséré par la fiche sans lancement automatique, puis Entrée a produit /root/lab dans le navigateur. Les fichiers de cette version sont préparés pour le checkpoint canonique.

