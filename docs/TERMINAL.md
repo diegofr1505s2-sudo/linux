@@ -55,7 +55,7 @@ node scripts/test-vm.cjs
 
 Ce test Node utilise v86 et les mêmes buffers locaux BIOS/noyau ainsi que le même WASM précompilé que le navigateur. Il ne lance jamais les commandes Linux sur l’hôte. Il attend l’invite réelle de l’image, envoie le script pédagogique dans l’UART, attend l’invite ash, puis vérifie les sorties des commandes suivantes exécutées **dans le Linux invité** :
 
-Le test charge directement les deux fonctions pures `prepareInsertion` et `isLabPrompt` depuis l’AST TypeScript du composant, sans charger xterm dans Node. Le passage à « prêt » n’utilise donc pas une expression régulière indépendante : il vérifie le même prédicat que React, avec `linuxlab:~/lab# ` et `linuxlab:/root/lab# `.
+Le test charge directement les fonctions pures `prepareInsertion`, `isLabPrompt` et `isBootstrapPrompt` depuis l’AST TypeScript du composant, sans charger xterm dans Node. Le passage à « prêt » n’utilise donc pas une expression régulière indépendante : il vérifie les invites du noyau et de `linuxlab:~/lab# ` / `linuxlab:/root/lab# `.
 
 ```sh
 pwd; echo VM_ECHO_OK; ls -1; cat logs/app.log | grep ERROR | wc -l; uname -r; busybox | head -1; printf 'BASH='; command -v bash || true; printf '\nASH='; command -v ash; printf 'SH='; readlink /bin/sh; printf 'APT='; command -v apt || true; printf '\nSYSTEMCTL='; command -v systemctl || true; printf '\nVM_TEST_DONE\n'
@@ -80,6 +80,8 @@ SYSTEMCTL=
 VM_TEST_DONE
 ```
 
+Le même test relève la liste des applets et vérifie la présence de `ls`, `cat`, `grep`, `awk`, `sed`, `find`, `tar` et `chmod`. Il vérifie aussi que `bash`, `apt`, `apt-get`, `systemctl` et `sudo` sont absents. `client/src/lib/terminal-capabilities.json` est généré à partir de cette exécution réelle et l’interface s’en sert pour signaler la compatibilité dans chaque fiche. Au démarrage, la VM désactive l’écho avant d’envoyer le script, le restaure dans le shell, filtre la sortie du noyau et efface l’écran par Ctrl-L avant d’afficher l’invite. Le script d’exercice ne doit plus être réaffiché.
+
 Le même test insère sans retour à la ligne le script suivant, vérifie qu’aucune sortie d’exécution n’apparaît pendant 500 ms, puis envoie une Entrée explicite :
 
 ```sh
@@ -92,6 +94,6 @@ echo 'MULTILINE_EXECUTED' > /root/lab/script/result.txt
 cat /root/lab/script/result.txt
 ```
 
-Les assertions vérifient que le texte inséré contient **zéro caractère de contrôle**, que les antislashs et apostrophes sont conservés, et que le script reste inexécuté avant Entrée. Après Entrée, les sorties vérifiées sont `Bonjour Linux Lab`, `C:\notes\tab`, `quote: 'ok` et `MULTILINE_EXECUTED`. La trace brute réelle avec ANSI est enregistrée dans `client/public/vm/boot-test-output.txt`. Aucun faux résultat ou capture d’écran de terminal n’est utilisé comme preuve.
+Les assertions vérifient que le texte inséré contient **zéro caractère de contrôle**, que les antislashs et apostrophes sont conservés, et que le script reste inexécuté avant Entrée. Après Entrée, les sorties vérifiées sont `Bonjour Linux Lab`, `C:\notes\tab`, `quote: 'ok` et `MULTILINE_EXECUTED`. La trace brute réelle avec ANSI est enregistrée dans le répertoire temporaire du système (`linuxlab-vm-boot-test-output.txt`), pas dans les actifs publics du site. Aucun faux résultat ou capture d’écran de terminal n’est utilisé comme preuve.
 
 Le composant a passé un contrôle TypeScript ciblé après ses corrections. Le projet a également compilé via `pnpm build:static` ; les modifications parallèles de l’interface sont gérées par le parent. Aucune commande de construction globale répétée n’est nécessaire pour reproduire le test de la VM.

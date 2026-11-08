@@ -36,6 +36,10 @@ export function isLabPrompt(tail: string): boolean {
   return /linuxlab:(?:~\/lab|\/root\/lab)# $/.test(tail);
 }
 
+export function isBootstrapPrompt(tail: string): boolean {
+  return /(?:~|root)% $/.test(tail);
+}
+
 export default function LinuxTerminal({ insertCommand, onOutput }: Props) {
   const [status, setStatus] = useState<Status>("idle");
   const [progress, setProgress] = useState("");
@@ -238,12 +242,12 @@ export default function LinuxTerminal({ insertCommand, onOutput }: Props) {
       try { module = await WebAssembly.compile(wasm); }
       catch { module = await WebAssembly.compile(await download("v86-fallback.wasm")); }
       const initCommand = new TextDecoder().decode(initBytes).trim() + "\n";
-      if (!initCommand.startsWith("mkdir -p /root/lab/")) throw new Error("Le fichier d’initialisation est invalide.");
+      if (!initCommand.includes("mkdir -p /root/lab/logs")) throw new Error("Le fichier d’initialisation est invalide.");
       if (!isCurrent() || controller.signal.aborted) return;
       transition("booting");
       setProgress("Noyau Linux réel · mémoire invitée 128 Mio");
       let tail = "";
-      let initialized = false;
+      let initialization: "initial-shell" | "quiet-shell" | "fixture" | "ready" = "initial-shell";
       const machine = new Emulator({
         // Precompiled WASM makes download/compatibility failures catchable above.
         wasm_fn: imports => new Promise(resolve => {
@@ -265,22 +269,34 @@ export default function LinuxTerminal({ insertCommand, onOutput }: Props) {
       vmRef.current = machine;
       machine.add_listener("serial0-output-byte", byte => {
         if (!isCurrent() || statusRef.current === "error") return;
+        if (byte !== 13) tail = (tail + String.fromCharCode(byte)).slice(-4096);
+        if (initialization !== "ready") {
+          if (initialization === "initial-shell" && isBootstrapPrompt(tail)) {
+            initialization = "quiet-shell";
+            transition("preparing");
+            setProgress("Masquage des messages de démarrage…");
+            machine.serial0_send("stty -echo\n");
+          } else if (initialization === "quiet-shell" && isBootstrapPrompt(tail)) {
+            initialization = "fixture";
+            setProgress("Création des fichiers d’exercice…");
+            machine.serial0_send(initCommand);
+          } else if (initialization === "fixture" && isLabPrompt(tail)) {
+            initialization = "ready";
+            if (timerRef.current) clearTimeout(timerRef.current);
+            outputBytesRef.current = [];
+            if (flushRef.current) clearTimeout(flushRef.current);
+            flushRef.current = null;
+            terminalRef.current?.reset();
+            transition("ready");
+            setProgress("");
+            machine.serial_send_bytes(0, new Uint8Array([12]));
+            terminalRef.current?.focus();
+            insertPending();
+          }
+          return;
+        }
         outputBytesRef.current.push(byte);
         if (!flushRef.current) flushRef.current = setTimeout(flushOutput, 16);
-        if (statusRef.current === "ready") return;
-        if (byte !== 13) tail = (tail + String.fromCharCode(byte)).slice(-4096);
-        if (!initialized && /(?:~% |(?:^|\n)[^\n]*[#$] )$/.test(tail)) {
-          initialized = true;
-          transition("preparing");
-          setProgress("Création de /root/lab et des fichiers d’exercice…");
-          machine.serial0_send(initCommand);
-        } else if (initialized && isLabPrompt(tail)) {
-          if (timerRef.current) clearTimeout(timerRef.current);
-          transition("ready");
-          setProgress("");
-          terminalRef.current?.focus();
-          insertPending();
-        }
       });
       machine.add_listener("download-error", event => fail(new Error(`Échec du chargement de ${event.file_name}.`)));
     } catch (cause) {

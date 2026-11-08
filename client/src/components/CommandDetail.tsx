@@ -17,6 +17,11 @@ import { toast } from "sonner";
 import { Streamdown } from "streamdown";
 import type { Command } from "@/lib/catalogue";
 import { CATEGORIES } from "@/lib/catalogue";
+import {
+  getCommandAvailability,
+  terminalAppletCount,
+  terminalProfile,
+} from "@/lib/terminal-capabilities";
 
 export async function copyText(text: string) {
   try {
@@ -39,10 +44,12 @@ export function CodeBlock({
   code,
   onTry,
   label,
+  tryLabel,
 }: {
   code: string;
   onTry?: (code: string) => void;
   label?: string;
+  tryLabel?: string;
 }) {
   const [copied, setCopied] = useState(false);
   const copy = async () => {
@@ -75,7 +82,7 @@ export function CodeBlock({
             {label || "Modifiez les chemins et paramètres avant utilisation."}
           </span>
           <button onClick={() => onTry(code)}>
-            <Play size={12} /> Essayer dans le terminal
+            <Play size={12} /> {tryLabel || "Essayer dans le terminal"}
           </button>
         </div>
       )}
@@ -103,6 +110,7 @@ export default function CommandDetail({
   const [tab, setTab] = useState("examples");
   if (!command) return null;
   const category = CATEGORIES.find(c => c.id === command.category);
+  const terminalCommand = getCommandAvailability(command.name);
   const external = /^https?:\/\//i.test(command.manualUrl)
     ? command.manualUrl
     : command.source;
@@ -190,6 +198,47 @@ export default function CommandDetail({
               </p>
             </section>
             <div
+              className={`info-callout terminal-compatibility terminal-compatibility-${terminalCommand.availability}`}
+              role="note"
+            >
+              {terminalCommand.availability === "available" ? (
+                <Info size={17} />
+              ) : (
+                <ShieldAlert size={19} />
+              )}
+              <div>
+                <strong>
+                  Dans le terminal LinuxLab :{" "}
+                  {terminalCommand.availability === "available"
+                    ? "présente"
+                    : terminalCommand.availability === "absent"
+                      ? "absente"
+                      : "non répertoriée"}
+                </strong>
+                <p>
+                  Environnement réellement mesuré : {terminalProfile} ·{" "}
+                  {terminalAppletCount} applets BusyBox. Les options peuvent
+                  différer de GNU/Linux.
+                </p>
+                {terminalCommand.availability !== "available" && (
+                  <>
+                    <p>
+                      {terminalCommand.availability === "absent"
+                        ? `« ${terminalCommand.executable} » n’est pas installé dans cette VM ; l’exemple affichera probablement « not found ».`
+                        : `« ${terminalCommand.executable} » ne figure pas dans la liste mesurée ; vérifiez sa présence avant de l’essayer.`}{" "}
+                      Cela ne signifie pas que la commande manque sur votre
+                      propre distribution.
+                    </p>
+                    {terminalCommand.executable && (
+                      <code>
+                        Vérification : command -v {terminalCommand.executable}
+                      </code>
+                    )}
+                  </>
+                )}
+              </div>
+            </div>
+            <div
               className="detail-tabs"
               role="tablist"
               aria-label="Contenu de la fiche"
@@ -228,7 +277,15 @@ export default function CommandDetail({
                       <span>{String(i + 1).padStart(2, "0")}</span>
                       <h3>{example.description}</h3>
                     </div>
-                    <CodeBlock code={example.code} onTry={onTry} />
+                    <CodeBlock
+                      code={example.code}
+                      onTry={onTry}
+                      tryLabel={
+                        terminalCommand.availability === "available"
+                          ? undefined
+                          : "Insérer quand même"
+                      }
+                    />
                     <p className="expected">
                       <span>Effet recherché</span>{" "}
                       {example.description.replace(/:$/, ".")}

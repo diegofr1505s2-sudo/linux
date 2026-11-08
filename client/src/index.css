@@ -1132,6 +1132,31 @@ select option {
 .info-callout svg {
   color: var(--green);
 }
+.terminal-compatibility {
+  margin: 18px 0 23px;
+}
+.terminal-compatibility strong {
+  color: var(--foreground);
+  font-weight: 500;
+}
+.terminal-compatibility p {
+  margin-top: 5px;
+}
+.terminal-compatibility code {
+  display: inline-block;
+  margin-top: 7px;
+  color: var(--green-bright);
+  font-size: 10px;
+  overflow-wrap: anywhere;
+}
+.terminal-compatibility-absent {
+  color: #bd9c71;
+  background: #b18b4810;
+  border-color: #b18b4840;
+}
+.terminal-compatibility-absent svg {
+  color: #bd9c71;
+}
 .detail-section {
   margin: 26px 0;
 }
@@ -2277,4 +2302,38 @@ select option {
 }
 .card-content > p {
   line-clamp: 2;
+}
+
+@media (max-width: 440px) {
+  .command-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 11px;
+  }
+  .card-content {
+    padding: 15px 15px 0;
+  }
+  .card-content h3 {
+    font-size: 22px;
+  }
+  .card-content > p {
+    font-size: 11px;
+    min-height: 0;
+  }
+  .card-preview {
+    font-size: 9px;
+    margin: 11px 0 12px;
+  }
+  .card-footer,
+  .card-level {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 760px) {
+  .terminal-dock {
+    right: max(8px, env(safe-area-inset-right));
+    bottom: max(8px, env(safe-area-inset-bottom));
+    width: calc(100vw - 16px - env(safe-area-inset-left) - env(safe-area-inset-right));
+    max-height: calc(100dvh - 16px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  }
 }
